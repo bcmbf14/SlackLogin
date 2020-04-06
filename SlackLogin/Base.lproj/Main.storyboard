@@ -14,7 +14,83 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Re8-si-fbz">
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't know your workspace URL?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0O9-k4-bqK">
+                                        <rect key="frame" x="20" y="727" width="374" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="workspace-url.slack.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVx-YV-HiP">
+                                        <rect key="frame" x="20" y="369" width="374" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6zG-Od-CeE">
+                                        <rect key="frame" x="20" y="359" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ooY-Fm-8NF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="go"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Slack workspace URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOK-PZ-7ec">
+                                        <rect key="frame" x="20" y="344" width="160" height="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="0O9-k4-bqK" firstAttribute="leading" secondItem="Re8-si-fbz" secondAttribute="leading" constant="20" id="HQd-WP-xFE"/>
+                                    <constraint firstItem="LVx-YV-HiP" firstAttribute="trailing" secondItem="6zG-Od-CeE" secondAttribute="trailing" id="HxR-wY-rno"/>
+                                    <constraint firstItem="6zG-Od-CeE" firstAttribute="leading" secondItem="Re8-si-fbz" secondAttribute="leading" constant="20" id="IGH-Xd-gcG"/>
+                                    <constraint firstItem="6zG-Od-CeE" firstAttribute="centerY" secondItem="Re8-si-fbz" secondAttribute="centerY" id="JUh-wb-Bi0"/>
+                                    <constraint firstItem="LVx-YV-HiP" firstAttribute="leading" secondItem="6zG-Od-CeE" secondAttribute="leading" id="P67-cz-chz"/>
+                                    <constraint firstItem="6zG-Od-CeE" firstAttribute="top" secondItem="BOK-PZ-7ec" secondAttribute="bottom" id="Pom-PO-MlT"/>
+                                    <constraint firstItem="BOK-PZ-7ec" firstAttribute="leading" secondItem="6zG-Od-CeE" secondAttribute="leading" id="cvN-8E-MmW"/>
+                                    <constraint firstAttribute="bottom" secondItem="0O9-k4-bqK" secondAttribute="bottom" constant="10" id="e63-MB-9YM"/>
+                                    <constraint firstAttribute="trailing" secondItem="6zG-Od-CeE" secondAttribute="trailing" constant="20" id="hUA-oQ-Ohs"/>
+                                    <constraint firstItem="LVx-YV-HiP" firstAttribute="centerY" secondItem="6zG-Od-CeE" secondAttribute="centerY" id="lhx-E0-L6X"/>
+                                    <constraint firstAttribute="trailing" secondItem="0O9-k4-bqK" secondAttribute="trailing" constant="20" id="vll-VR-4Ag"/>
+                                    <constraint firstItem="LVx-YV-HiP" firstAttribute="height" secondItem="6zG-Od-CeE" secondAttribute="height" multiplier="0.5" id="woJ-SD-7vy"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vgt-VQ-UiN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpZ-zf-XMj">
+                                        <rect key="frame" x="354" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="0LI-qU-3LH"/>
+                                        </constraints>
+                                        <state key="normal" title="Next"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DBJ-46-GSP"/>
+                                    <constraint firstItem="SpZ-zf-XMj" firstAttribute="top" secondItem="Vgt-VQ-UiN" secondAttribute="top" id="Feh-oC-Ywf"/>
+                                    <constraint firstAttribute="bottom" secondItem="SpZ-zf-XMj" secondAttribute="bottom" id="VR5-IZ-QWO"/>
+                                    <constraint firstAttribute="trailing" secondItem="SpZ-zf-XMj" secondAttribute="trailing" id="gJe-hM-OVG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Vgt-VQ-UiN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2O5-TS-3YF"/>
+                            <constraint firstItem="Vgt-VQ-UiN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2fV-9Q-Xk4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vgt-VQ-UiN" secondAttribute="trailing" id="5ay-eG-5na"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Re8-si-fbz" secondAttribute="bottom" id="8b1-06-HhM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Re8-si-fbz" secondAttribute="trailing" id="NhA-z2-HWu"/>
+                            <constraint firstItem="Re8-si-fbz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Npc-wV-7GV"/>
+                            <constraint firstItem="Re8-si-fbz" firstAttribute="top" secondItem="Vgt-VQ-UiN" secondAttribute="bottom" id="d9b-Mp-Rri"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="yjm-Nd-Z35"/>
