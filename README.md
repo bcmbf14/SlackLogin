@@ -3,20 +3,20 @@
 
 ___배운점과 추가로 공부해야될 부분들 정리___
 
----
+# 
 
 ___Step1___
   
 ###### [Textfield Inspector Keyboard attributes](https://developer.apple.com/documentation/uikit/uitextfield) 
     
-1. Correction : 엉뚱한 값이 입력되지 않도록 자동수정 옵션을 꺼주었다.
-2. Spell Checking : 엉뚱한 값이 입력되지 않도록 맞춤법 검사 옵션을 꺼주었다. 
-3. Keyboard Type : url을 입력하기 쉽도록 type을 url로 바꿔주었다.
-4. Return Key : 키보드 내의 return key를 go로 바꿔주어서 좀 더 명시적으로 보이게 한다. 
+- Correction : 엉뚱한 값이 입력되지 않도록 자동수정 옵션을 꺼주었다.
+- Spell Checking : 엉뚱한 값이 입력되지 않도록 맞춤법 검사 옵션을 꺼주었다. 
+- Keyboard Type : url을 입력하기 쉽도록 type을 url로 바꿔주었다.
+- Return Key : 키보드 내의 return key를 go로 바꿔주어서 좀 더 명시적으로 보이게 한다. 
 
 # 
 
-`Step5`  
+___Step5___
 ###### 입력문자제한(캐릭터 셋 추가, 적용)
 
   ```swift
@@ -47,15 +47,15 @@ ___Step1___
   
   ```
 
----
+# 
 
 
-- Step6
-  - 텍스트 필드 호출 시점 : 아래 메소드에서 string을 프린트해보면 한글자씩 늦게 나오는 것을 볼 수 있다.  
+___Step6___
+###### 텍스트 필드 호출 시점 : 아래 메소드에서 string을 프린트해보면 한글자씩 늦게 나오는 것을 볼 수 있다.  
   ```swift 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {}
   ```
-  - 따라서, 최종텍스트를 찾아야 한다.
+###### 따라서, 최종텍스트를 찾아야 한다.
   ```swift
   //그 텍필찍어보면 한글자씩 늦게나오잖아. 그래서 그거 해결하려고 마지막 텍스트 가져오는거야.
   //그리고 현재사이즈같은거 정확하게 갖고오기 편하려고 NSMutableString으로 만든거래.
@@ -70,7 +70,7 @@ ___Step1___
   //현재 폰트 기준으로 정확한 너비를 가져온다.
   let width = finalText.size(withAttributes: dict).width
    ```
-  - 그리고 입력된 텍스트 width만큼 leading으로 걸려있는 placeholder의 제약조건을 갱신해준다. 
+###### 그리고 입력된 텍스트 width만큼 leading으로 걸려있는 placeholder의 제약조건을 갱신해준다. 
   ```swift
   //그리고 그 너비만큼 밀어준다.
   placeholderLeadingConstraint.constant = width
@@ -84,10 +84,10 @@ ___Step1___
   nextButton.isEnabled = finalText.length > 0
   
   ```
----
+# 
 
-- Step7
-  - 옵저버 등록 : 옵저버를 등록하는데 약간 특이하더라고? 괜찮은거같애. 
+___Step7___
+###### 옵저버 등록 : 옵저버를 등록하는데 약간 특이하더라고? 괜찮은거같애. 
   ```swift
    //옵저버 생성 
    //노피티케이션 토큰을 저장하는 걸 선언하네?
@@ -141,8 +141,8 @@ ___Step1___
         tokens.append(token)
         
     }
-    ```
-    - Container Patten :  
+```    
+###### Container Patten :  
     이건 뭐냐면, 키보드 높낮이를 조절할 때 제약조건을 어떤 레이블이나 텍스트필드 등을 감싸고 있는 컨테이너뷰에 거는거야.  
     그렇게하면 컨테이너 필드가 올라갈 때, 컨테이너 안에있는 뷰들의 제약조건도 자동으로 변경이 되서 UI를 구성하기 편하다는거지.  
     예를들어보면, 난 이제까지 view.origin.frame.y += keyboardheight 이런식으로 처리를 했었어.  
@@ -151,7 +151,7 @@ ___Step1___
     이녀석 같은 경우는 키보드 높이가 150이 올라간 그 후에 남아있는 컨테이너뷰의 높이를 기준으로 centerY의 위치로 텍스트필드가 이동하더라고.  
     그래서 훨씬 보기 좋더라고. 
   
-    - 키보드 애니메이션 상황에 따른 활성화/비활성화 
+###### 키보드 애니메이션 상황에 따른 활성화/비활성화 
     ```swift
     
      override func viewDidLoad() {
@@ -173,4 +173,4 @@ ___Step1___
                 }
     }
     ```
-  
+# 
