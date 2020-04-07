@@ -5,18 +5,20 @@ ___배운점과 추가로 공부해야될 부분들 정리___
 
 ---
 
-> Step1
+`Step1`
   
-  ###### [Textfield Inspector Keyboard attributes](https://developer.apple.com/documentation/uikit/uitextfield) 
-    1. Correction : 엉뚱한 값이 입력되지 않도록 자동수정 옵션을 꺼주었다.
-    2. Spell Checking : 엉뚱한 값이 입력되지 않도록 맞춤법 검사 옵션을 꺼주었다. 
-    3. Keyboard Type : url을 입력하기 쉽도록 type을 url로 바꿔주었다.
-    4. Return Key : 키보드 내의 return key를 go로 바꿔주어서 좀 더 명시적으로 보이게 한다. 
+###### [Textfield Inspector Keyboard attributes](https://developer.apple.com/documentation/uikit/uitextfield) 
+    
+1. Correction : 엉뚱한 값이 입력되지 않도록 자동수정 옵션을 꺼주었다.
+2. Spell Checking : 엉뚱한 값이 입력되지 않도록 맞춤법 검사 옵션을 꺼주었다. 
+3. Keyboard Type : url을 입력하기 쉽도록 type을 url로 바꿔주었다.
+4. Return Key : 키보드 내의 return key를 go로 바꿔주어서 좀 더 명시적으로 보이게 한다. 
 
 ---
 
-- Step5  
-  <code>입력문자제한(캐릭터 셋 추가, 적용)</code>
+`Step5`  
+###### 입력문자제한(캐릭터 셋 추가, 적용)
+
   ```swift
     //캐릭터셋을 만들어줘서 내가 원하는 문자만 받을 수 있다.
     //입력하는 것중에서 내가 원하는 것을 검색해서 그게 아니면 안들어오게 해주고 있는데,
