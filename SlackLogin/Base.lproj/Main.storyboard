@@ -98,6 +98,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yjm-Nd-Z35"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="8b1-06-HhM" id="BMB-cy-As6"/>
                         <outlet property="nextButton" destination="SpZ-zf-XMj" id="T04-g5-8hr"/>
                         <outlet property="placeholderLabel" destination="LVx-YV-HiP" id="nv5-rv-mNM"/>
                         <outlet property="placeholderLeadingConstraint" destination="P67-cz-chz" id="bb2-Jo-n7p"/>
