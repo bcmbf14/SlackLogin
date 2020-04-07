@@ -129,6 +129,9 @@
                                             <constraint firstAttribute="width" constant="60" id="KhC-LD-Sdr"/>
                                         </constraints>
                                         <state key="normal" title="Prev"/>
+                                        <connections>
+                                            <action selector="movePrevious:" destination="u96-ea-fQA" eventType="touchUpInside" id="AUO-t7-gxY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -155,6 +158,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="u96-ea-fQA" id="jGr-E0-Jad"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iw-yY-orE">
                                         <rect key="frame" x="20" y="344" width="115" height="15"/>
@@ -190,6 +196,12 @@
                         <viewLayoutGuide key="safeArea" id="cV0-B7-nIQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="e9c-cr-QGw"/>
+                    <connections>
+                        <outlet property="emailField" destination="Tjy-9U-cR0" id="og6-tv-ZeN"/>
+                        <outlet property="placeholderLabel" destination="fAL-rl-tkq" id="JbO-nc-uUu"/>
+                        <outlet property="titleLabel" destination="4iw-yY-orE" id="bHb-I4-o5X"/>
+                        <outlet property="titleLabelBottomConstraint" destination="EFK-CT-v8d" id="3Bg-20-EW4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8Y-zI-DuU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
