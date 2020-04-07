@@ -5,8 +5,9 @@ ___배운점과 추가로 공부해야될 부분들 정리___
 
 ---
 
-- Step1
-  - [Textfield Inspector Keyboard attributes](https://developer.apple.com/documentation/uikit/uitextfield) 
+> Step1
+  
+  ###### [Textfield Inspector Keyboard attributes](https://developer.apple.com/documentation/uikit/uitextfield) 
     1. Correction : 엉뚱한 값이 입력되지 않도록 자동수정 옵션을 꺼주었다.
     2. Spell Checking : 엉뚱한 값이 입력되지 않도록 맞춤법 검사 옵션을 꺼주었다. 
     3. Keyboard Type : url을 입력하기 쉽도록 type을 url로 바꿔주었다.
