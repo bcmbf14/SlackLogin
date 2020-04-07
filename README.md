@@ -152,7 +152,8 @@ ___Step7___
     그래서 훨씬 보기 좋더라고. 
   
 ###### 키보드 애니메이션 상황에 따른 활성화/비활성화 
-    ```swift
+    
+```swift
     
      override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,5 +173,6 @@ ___Step7___
                     UIView.setAnimationsEnabled(true)
                 }
     }
-    ```
+  
+```
 # 
