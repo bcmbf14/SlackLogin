@@ -197,6 +197,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="e9c-cr-QGw"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="9lP-Lf-6QL" id="jjA-Ue-Qyf"/>
                         <outlet property="emailField" destination="Tjy-9U-cR0" id="og6-tv-ZeN"/>
                         <outlet property="placeholderLabel" destination="fAL-rl-tkq" id="JbO-nc-uUu"/>
                         <outlet property="titleLabel" destination="4iw-yY-orE" id="bHb-I4-o5X"/>

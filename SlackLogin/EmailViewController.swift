@@ -9,24 +9,78 @@
 import UIKit
 
 class EmailViewController: UIViewController {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var titleLabelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    //노피티케이션 토큰을 저장하는 걸 선언하네?
+    var tokens = [NSObjectProtocol]()
+    
+    
+    //옵져버 제거
+    deinit {
+        tokens.forEach{
+            NotificationCenter.default.removeObserver($0)
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        emailField.becomeFirstResponder()
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         titleLabel.alpha = 0.0
         titleLabelBottomConstraint.constant = -20
+        
+        
+        var token = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
+            if let frameValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                
+                let keyboardFrame = frameValue.cgRectValue
+                
+                self?.bottomConstraint.constant = keyboardFrame.size.height
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    self?.view.layoutIfNeeded()
+                }) { (finished) in
+                    
+//                    UIView.setAnimationsEnabled(true)
+                }
+                
+            }
+        }
+        
+        tokens.append(token)
+        
+        
+        token = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            
+            self?.bottomConstraint.constant = 0
+            
+            UIView.animate(withDuration: 0.3) {
+                self?.view.layoutIfNeeded()
+            }
+        })
+        
+        tokens.append(token)        
     }
     
     @IBAction func movePrevious(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
-
+    
 }
 
 

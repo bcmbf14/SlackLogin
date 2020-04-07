@@ -54,13 +54,11 @@ class ViewController: UIViewController {
             if let frameValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 
                 let keyboardFrame = frameValue.cgRectValue
-                print(keyboardFrame)
                 
                 self?.bottomConstraint.constant = keyboardFrame.size.height
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self?.view.layoutIfNeeded()
-                    print("11")
                 }) { (finished) in
                     //그니까 하고싶은건 이거야.
                     //화면실행하자마자 키보드가 첫응답을 한상태여야 해서 becomeFirstResponder를 했어.
