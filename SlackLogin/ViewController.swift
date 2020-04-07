@@ -98,6 +98,19 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let cnt = textField.text?.count ?? 0
+        
+        if cnt > 0 {
+            performSegue(withIdentifier: "emailSegue", sender: nil)
+        }
+        
+        return true
+    }
+    
+    
     //텍스트필드에서 편집이 실행된 다음에 실행되는 메소드
     func textFieldDidBeginEditing(_ textField: UITextField) {
         //보통은 키보드가 애니메이션 없이 바로 올라오기 때문에 처리, 모든 애니메이션 비활성화

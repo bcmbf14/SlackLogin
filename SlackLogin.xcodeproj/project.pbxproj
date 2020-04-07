@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82C40644243D2EC700CADB7A /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C40643243D2EC700CADB7A /* EmailViewController.swift */; };
 		82F279DC243BD65200ED4965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F279DB243BD65200ED4965 /* AppDelegate.swift */; };
 		82F279DE243BD65200ED4965 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F279DD243BD65200ED4965 /* SceneDelegate.swift */; };
 		82F279E0243BD65200ED4965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F279DF243BD65200ED4965 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82C40643243D2EC700CADB7A /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		82F279D8243BD65200ED4965 /* SlackLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlackLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82F279DB243BD65200ED4965 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82F279DD243BD65200ED4965 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				82F279DB243BD65200ED4965 /* AppDelegate.swift */,
 				82F279DD243BD65200ED4965 /* SceneDelegate.swift */,
 				82F279DF243BD65200ED4965 /* ViewController.swift */,
+				82C40643243D2EC700CADB7A /* EmailViewController.swift */,
 				82F279E1243BD65200ED4965 /* Main.storyboard */,
 				82F279E4243BD65300ED4965 /* Assets.xcassets */,
 				82F279E6243BD65300ED4965 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				82F279E0243BD65200ED4965 /* ViewController.swift in Sources */,
 				82F279DC243BD65200ED4965 /* AppDelegate.swift in Sources */,
 				82F279DE243BD65200ED4965 /* SceneDelegate.swift in Sources */,
+				82C40644243D2EC700CADB7A /* EmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
