@@ -176,3 +176,10 @@ ___Step7___
   
 ```
 # 
+
+___Step14___
+
+###### 시뮬레이터 debug, Slow Animation 
+###### 키보드 Short Cut 
+
+
