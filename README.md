@@ -5,7 +5,7 @@ ___배운점과 추가로 공부해야될 부분들 정리___
 
 ---
 
-`Step1`
+___Step1___
   
 ###### [Textfield Inspector Keyboard attributes](https://developer.apple.com/documentation/uikit/uitextfield) 
     
@@ -14,7 +14,7 @@ ___배운점과 추가로 공부해야될 부분들 정리___
 3. Keyboard Type : url을 입력하기 쉽도록 type을 url로 바꿔주었다.
 4. Return Key : 키보드 내의 return key를 go로 바꿔주어서 좀 더 명시적으로 보이게 한다. 
 
----
+# 
 
 `Step5`  
 ###### 입력문자제한(캐릭터 셋 추가, 적용)
