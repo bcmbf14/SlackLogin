@@ -10,6 +10,8 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
+    var bottomMargin: CGFloat? //키보드 높이를 전달할 객체
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
@@ -22,6 +24,8 @@ class EmailViewController: UIViewController {
     
     //옵져버 제거
     deinit {
+        print("deinit 2")
+
         tokens.forEach{
             NotificationCenter.default.removeObserver($0)
         }
@@ -30,26 +34,45 @@ class EmailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear 2")
+
         
         emailField.becomeFirstResponder()
         
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("viewWillDisappear 2")
+
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad 2")
+
         
+
         titleLabel.alpha = 0.0
         titleLabelBottomConstraint.constant = -20
+        
+        bottomConstraint.constant = bottomMargin ?? 0.0
+        UIView.performWithoutAnimation {
+            self.view.layoutIfNeeded()
+        }
         
         
         var token = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] noti in
             if let frameValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                 
                 let keyboardFrame = frameValue.cgRectValue
+                print(keyboardFrame.size.height, "2222" )
                 
-                self?.bottomConstraint.constant = keyboardFrame.size.height
+                //전달된 높이값을 우선적으로 처리
+                self?.bottomConstraint.constant = self?.bottomMargin ?? keyboardFrame.size.height
                 
                 UIView.animate(withDuration: 0.3, animations: {
                     self?.view.layoutIfNeeded()
