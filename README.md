@@ -177,9 +177,108 @@ ___Step7___
 ```
 # 
 
+___Step13___
+
+###### 화면전환시 애니메이션 버그(시뮬레이터 Slow Animation)
+
+버그가 발생했다.  
+
+_첫번째 버그_
+첫화면에서 Next 버튼을 누르면, 네비게이션 컨트롤러 고유의 push 애니메이션을 실행한다.  
+그런데 화면이 넘어가면서, 첫화면의 요소들이 위로 올라가는 버그가 발생했다. 왜그럴까?  
+  
+이유는 이렇다.  
+원활한 입력을 위해서 우리는 첫화면의 텍스트필드 키보드 타입 중 Correction과 Spell Checking값에 no를 지정해주었다.  
+그리고 두번째 화면에서는 해당 키보드 타입 옵션을 해제하지 않았다. 즉, 두화면의 키보드 높이가 서로 다르다.  
+그리고 노티피케이션을 해제하는 코드를 첫화면의 소멸자에 넣어두었다. 그러나, 두번째 화면에 push가 되더라도 deinit은 불리지 않는다.  
+즉, 노티피케이션이 아직 해제되지 않았다는 말이다.  
+  
+그러면서 두번째화면의 keyboardWillShowNotification가 키보드 높이를 알리고, 그것을 구독하고 있는 두번째 화면의 메소드와 덩달아 첫번째 화면의 메소드까지 반응을 한 것이다. 키보드 높이가 달라졌으니 센터도 달라지고 결국 요소들이 push되면서 위로 올라가는 버그가 발생했다.    
+
+_해결방안_
+```swift 
+
+override func viewWillDisappear(_ animated: Bool) {
+  super.viewWillDisappear(animated)
+
+  tokens.forEach{
+    NotificationCenter.default.removeObserver($0)
+  }
+}
+
+```
+  
+
+노티피케이션 구독을 해제하는 코드를 viewWillDisappear 메소드에 집어넣는다.  
+사실 내 첫 생각은 두번째화면의 viewDidLoad가 첫번쨰화면의 viewWillDisappear보다 미세하게 빨리 불리기 떄문에, 이게 해결되지 않을 줄 알았다.  
+그러나 그 차이가 엄청나게 미세하고, 노피가 발생하고 첫번쨰 화면까지 오는 시간?이 있기 때문에 이 코드가 잘 동작하는 것 같다.  
+그리고 이렇게 처리한 후, 문제가 전부다 해결 된 것처럼 보이지만 새로운 문제가 생긴다. 그것은 첫번째 뷰에서의 viewDidLoad는 메모리에 올라갈 때. 
+한번만 불린다는 것이다. 즉 한번 화면을 갔다가 돌아오면 키보드 높이에 따른 애니메이션은 발생하지 않는다. 높이 또한 숏컷이 있는 키보드 높이를 유지한다.  
+두번째 노티피케이션에서 발생한 값을 그대로 가지고 있는 것이다. 따라서 ___이 문제를 해결하려면 노티피케이션의 구독코드를 viewWillAppear로 옮겨주어야 한다.___
+  
+_두번째 버그_  
+두번째 화면에 들어갈때 밑에서부터 올라오는 애니메이션이 발생한다.  
+순서는 이렇다. becomeFirstResponder를 해주면서 키보드 높이값이 전달되고, 그것에 따라서 애니메이션이 발생했다.  
+  
+_해결방안_
+어떻게 해결할까? 해결방안은 이렇다. 두번째화면에 값을 받을 인스턴스를 선언하고, 첫화면에서 push하기 직전에 호출되는 메소드를 통해 키보드 높이값을 전달해준다. 그리고 그 값으로 viewDidLoad에서 높이값을 세팅해준다. 또한 미세한 애니메이션이 보일 수 있으므로 애니메이션을 없애주는 UIView.performWithoutAnimation {} 코드를 실행한다.  
+
+```swift 
+
+//키보드 높이를 전달, 화면이 전환되기 직전에 호출
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+if let vc = segue.destination as? EmailViewController {
+vc.bottomMargin = bottomConstraint.constant
+}
+}
+
+override func viewDidLoad() {
+  super.viewDidLoad()
+  print("viewDidLoad 2")
+
+bottomConstraint.constant = bottomMargin ?? 0.0
+  UIView.performWithoutAnimation {
+    self.view.layoutIfNeeded()
+  }
+}
+      
+```
+
+_문제점_
+완벽한 해결책은 아니다. 왜냐하면 첫쨰뷰와 둘째뷰의 높이값이 다르기 때문이다. 첫째뷰는 키보드 숏컷바가 없다.  
+따라서 높이값은 301인 반면에 둘째뷰는 346이다. 그래서 완벽한 해결을 하려면 둘째뷰의 숏컷바를 없애주거나 해야한다.  
+하지만 또 숏컷바가 필요할 수 있으므로, 잘 선택해야 한다. 기기마다 키보드 높이값은 다를테니.  
+
+
+
 ___Step14___
 
-###### 시뮬레이터 debug, Slow Animation 
-###### 키보드 Short Cut 
+###### 두번째뷰에서 되돌아올시에 팝애니메이션 실행 
+
+이것도 어떻게보면 되게 디테일한?거다. 
+뭐냐면, viewcontroller lifecycle에 viewDidAppear는 애니메이션 같은 것들을 그려준다. 그래서 보통 애니메이션 그리는 코드는 여기다가 넣는다. viewWillAppear에 넣으면 잘 동작하지 않는 경우가 많으므로. 
+
+그런데 우리는 첫번째뷰가 실행될때 바로 키보드가 올라가게 하기 위해서, textFieldDidBeginEditing 메소드에서 UIView의 전체 애니메이션을 꺼줬다. 
+그렇기 때문에 팝을 할때 네비게이션 고유의 애니메이션이 동작하지 않는 것이다. 그러면 어떻게 할까? 아래와 같이 변수를 하나 만들어줘서 처음 실행될 때만, 애니메이션이 꺼지게 지정해두면 된다. 만약에 뷰컨이 메모리에서 날아갔다면 presented 메소드 또한 다시 생성되었을 것이므로 동작에 지장이 없다. 
+
+실제로 뷰가 로드되고, 델리게이트가 실행되고, 그 후에 viewDidAppear가 불리기도 한다. 
+
+```swift 
+
+var presented = false
+
+ //텍스트필드에서 편집이 실행된 다음에 실행되는 메소드
+func textFieldDidBeginEditing(_ textField: UITextField) {
+    print("textFieldDidBeginEditing")
+    //보통은 키보드가 애니메이션 없이 바로 올라오기 때문에 처리, 모든 애니메이션 비활성화
+    if !presented {
+        UIView.setAnimationsEnabled(false)
+        presented = true
+    }
+}
+
+```
+
+
 
 
