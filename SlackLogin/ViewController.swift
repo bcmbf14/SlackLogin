@@ -103,6 +103,7 @@ class ViewController: UIViewController {
                     //다시 애니메이션을 활성화시켜줘야 하잖아.
                     //여기 애니메이션을 걸어놓는다고 바로 실행이되는게아니라, 이미 노티를 등록할때 세팅이 되는거야.
                     //그래서 애니메이션이 등록?되면서 컴플리션으로 다시 애니메이션을 활성화시켜주는거지
+                    
                     UIView.setAnimationsEnabled(true)
                 }
                 
